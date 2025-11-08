@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código de Ética - Ingeniería en Sistemas</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .tab:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .content-section {
+            display: none;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .principle-card {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .principle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .principle-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .principle-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .example-box {
+            background-color: #e8f4fc;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        .quiz-section {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .quiz-option {
+            padding: 0.8rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .quiz-option:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .quiz-option.selected {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .quiz-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .quiz-result.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .quiz-result.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                min-width: 100%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Código de Ética Profesional</h1>
+            <p class="subtitle">Ingeniería en Sistemas Computacionales</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="nav-tabs">
+            <div class="tab active" data-tab="introduccion">Introducción</div>
+            <div class="tab" data-tab="principios">Principios Fundamentales</div>
+            <div class="tab" data-tab="responsabilidades">Responsabilidades</div>
+            <div class="tab" data-tab="casos">Casos de Estudio</div>
+            <div class="tab" data-tab="evaluacion">Auto-Evaluación</div>
+        </div>
+        
+        <section id="introduccion" class="content-section active">
+            <h2>Introducción al Código de Ética</h2>
+            <p>El código de ética para ingenieros en sistemas establece los principios y normas que guían la conducta profesional en el desarrollo, implementación y mantenimiento de sistemas de información.</p>
+            
+            <div class="principle-card">
+                <h3>¿Por qué es importante la ética en la ingeniería de sistemas?</h3>
+                <p>Los ingenieros en sistemas tienen acceso a información sensible, sistemas críticos y tecnologías que impactan directamente a individuos, organizaciones y la sociedad en general. Un comportamiento ético garantiza:</p>
+                <ul>
+                    <li>Protección de datos personales y corporativos</li>
+                    <li>Seguridad de sistemas críticos</li>
+                    <li>Confianza en las tecnologías digitales</li>
+                    <li>Desarrollo sostenible y responsable de la tecnología</li>
+                </ul>
+            </div>
+            
+            <div class="principle-card">
+                <h3>Organizaciones que establecen estándares éticos</h3>
+                <p>Varias organizaciones internacionales han desarrollado códigos de ética para profesionales de TI:</p>
+                <ul>
+                    <li>IEEE (Institute of Electrical and Electronics Engineers)</li>
+                    <li>ACM (Association for Computing Machinery)</li>
+                    <li>ISACA (Information Systems Audit and Control Association)</li>
+                    <li>(ISC)² - International Information System Security Certification Consortium</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="principios" class="content-section">
+            <h2>Principios Fundamentales de Ética Profesional</h2>
+            
+            <div class="principle-card">
+                <div class="principle-title">
+                    <div class="principle-icon">1</div>
+                    <h3>Integridad y Honestidad</h3>
+                </div>
+                <p>Los ingenieros en sistemas deben ser honestos y transparentes en todas sus actividades profesionales, evitando conflictos de interés y declarando cualquier situación que pueda comprometer su imparcialidad.</p>
+                
+                <div class="example-box">
+                    <div class="example-title">Ejemplo:</div>
+                    <p>Un ingeniero descubre un error en un sistema que él mismo desarrolló. Aunque podría ocultarlo, reporta inmediatamente el problema y trabaja en su solución, informando a todos los afectados.</p>
+                </div>
+            </div>
+            
+            <div class="principle-card">
+                <div class="principle-title">
+                    <div class="principle-icon">2</div>
+                    <h3>Competencia Profesional</h3>
+                </div>
+                <p>Los profesionales deben mantener y mejorar continuamente sus conocimientos técnicos, aceptando solo aquellas responsabilidades para las cuales están calificados y buscando asesoramiento cuando sea necesario.</p>
+                
+                <div class="example-box">
+                    <div class="example-title">Ejemplo:</div>
+                    <p>Un ingeniero reconoce que no tiene la experiencia necesaria para implementar un sistema de seguridad crítico y recomienda contratar a un especialista en ciberseguridad.</p>
+                </div>
+            </div>
+            
+            <div class="principle-card">
+                <div class="principle-title">
+                    <div class="principle-icon">3</div>
+                    <h3>Responsabilidad Social</h3>
+                </div>
+                <p>Los ingenieros en sistemas deben considerar el impacto social de su trabajo, asegurando que sus sistemas beneficien a la sociedad, respeten la diversidad y no causen daño.</p>
+                
+                <div class="example-box">
+                    <div class="example-title">Ejemplo:</div>
+                    <p>Al desarrollar un algoritmo de contratación, un ingeniero verifica que no contenga sesgos que puedan discriminar por género, raza o edad.</p>
+                </div>
+            </div>
+            
+            <div class="principle-card">
+                <div class="principle-title">
+                    <div class="principle-icon">4</div>
+                    <h3>Confidencialidad</h3>
+                </div>
+                <p>Los profesionales deben proteger la información confidencial obtenida en el ejercicio de sus funciones, excepto cuando exista una obligación ética o legal de divulgarla.</p>
+                
+                <div class="example-box">
+                    <div class="example-title">Ejemplo:</div>
+                    <p>Un administrador de sistemas rechaza una solicitud de acceso a datos personales de empleados que no está justificada por motivos laborales legítimos.</p>
+                </div>
+            </div>
+            
+            <div class="principle-card">
+                <div class="principle-title">
+                    <div class="principle-icon">5</div>
+                    <h3>Propiedad Intelectual</h3>
+                </div>
+                <p>Los ingenieros deben respetar los derechos de propiedad intelectual, utilizando solo software y recursos para los cuales tienen licencia adecuada y reconociendo el trabajo de otros.</p>
+                
+                <div class="example-box">
+                    <div class="example-title">Ejemplo:</div>
+                    <p>Un desarrollador asegura que todas las librerías de código abierto utilizadas en un proyecto cumplan con las licencias correspondientes y se atribuyan correctamente.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="responsabilidades" class="content-section">
+            <h2>Responsabilidades Profesionales</h2>
+            
+            <div class="principle-card">
+                <h3>Hacia los Clientes y Empleadores</h3>
+                <ul>
+                    <li>Proveer servicios competentes y dentro de los límites de su experiencia</li>
+                    <li>Mantener la confidencialidad de la información del cliente/empleador</li>
+                    <li>Informar sobre cualquier conflicto de interés</li>
+                    <li>No aceptar trabajos que compitan directamente con los intereses del empleador</li>
+                </ul>
+            </div>
+            
+            <div class="principle-card">
+                <h3>Hacia la Profesión</h3>
+                <ul>
+                    <li>Contribuir al desarrollo de la profesión compartiendo conocimientos</li>
+                    <li>Apoyar a colegas en su desarrollo profesional</li>
+                    <li>Respetar a otros profesionales</li>
+                    <li>Denunciar prácticas no éticas dentro de la profesión</li>
+                </ul>
+            </div>
+            
+            <div class="principle-card">
+                <h3>Hacia la Sociedad</h3>
+                <ul>
+                    <li>Considerar el impacto ambiental de los sistemas desarrollados</li>
+                    <li>Promover el acceso a la tecnología para diversos grupos sociales</li>
+                    <li>Desarrollar sistemas que mejoren la calidad de vida</li>
+                    <li>Proteger la privacidad y seguridad de las personas</li>
+                </ul>
+            </div>
+            
+            <div class="principle-card">
+                <h3>Hacia Sí Mismo</h3>
+                <ul>
+                    <li>Mantener y mejorar sus competencias profesionales</li>
+                    <li>Participar en actividades de desarrollo profesional continuo</li>
+                    <li>Mantener un equilibrio entre vida profesional y personal</li>
+                    <li>Buscar ayuda cuando enfrente dilemas éticos complejos</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="casos" class="content-section">
+            <h2>Casos de Estudio y Dilemas Éticos</h2>
+            
+            <div class="principle-card">
+                <h3>Caso 1: Privacidad vs. Seguridad</h3>
+                <p><strong>Escenario:</strong> Te han encargado desarrollar un sistema de monitoreo para una empresa que rastrea la actividad de los empleados para prevenir fugas de información. El sistema puede acceder a correos personales y mensajes privados.</p>
+                
+                <div class="example-box">
+                    <div class="example-title">Preguntas para reflexionar:</div>
+                    <ul>
+                        <li>¿Hasta qué punto es ético monitorear a los empleados?</li>
+                        <li>¿Cómo equilibrar la seguridad corporativa con el derecho a la privacidad?</li>
+                        <li>¿Qué medidas podrías implementar para respetar ambos aspectos?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="principle-card">
+                <h3>Caso 2: Sesgo en Algoritmos</h3>
+                <p><strong>Escenario:</strong> Has desarrollado un sistema de selección de personal que utiliza inteligencia artificial. Descubres que el sistema tiende a favorecer candidatos masculinos para posiciones técnicas, replicando sesgos presentes en los datos de entrenamiento.</p>
+                
+                <div class="example-box">
+                    <div class="example-title">Preguntas para reflexionar:</div>
+                    <ul>
+                        <li>¿Cuál es tu responsabilidad al descubrir este sesgo?</li>
+                        <li>¿Cómo abordarías la corrección del sistema?</li>
+                        <li>¿Debes informar a los clientes sobre este descubrimiento?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="principle-card">
+                <h3>Caso 3: Software con Defectos Conocidos</h3>
+                <p><strong>Escenario:</strong> Tu empresa ha desarrollado un software médico que tiene un defecto menor que aparece en circunstancias muy específicas. Corregirlo retrasaría el lanzamiento y afectaría las finanzas de la empresa. La gerencia quiere lanzar el producto y corregir el problema en una actualización posterior.</p>
+                
+                <div class="example-box">
+                    <div class="example-title">Preguntas para reflexionar:</div>
+                    <ul>
+                        <li>¿Es ético lanzar un producto con defectos conocidos?</li>
+                        <li>¿Cómo evaluarías la gravedad del defecto?</li>
+                        <li>¿Qué argumentos presentarías a la gerencia?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="evaluacion" class="content-section">
+            <h2>Auto-Evaluación Ética</h2>
+            <p>Responde las siguientes preguntas para evaluar tu comprensión de los principios éticos en ingeniería de sistemas.</p>
+            
+            <div class="quiz-section">
+                <div class="quiz-question">
+                    <h3>Pregunta 1:</h3>
+                    <p>Un cliente te pide desarrollar un sistema que recopile datos de usuarios sin su conocimiento explícito. ¿Cuál sería tu respuesta?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">Aceptar el trabajo sin cuestionamientos</div>
+                        <div class="quiz-option" data-correct="false">Aceptar pero no implementar la recopilación oculta</div>
+                        <div class="quiz-option" data-correct="true">Explicar al cliente los requisitos de consentimiento informado</div>
+                        <div class="quiz-option" data-correct="false">Desarrollar el sistema pero incluir una cláusula de responsabilidad</div>
+                    </div>
+                    <div class="quiz-result"></div>
+                </div>
+                
+                <div class="quiz-question">
+                    <h3>Pregunta 2:</h3>
+                    <p>Descubres que un colega está utilizando software pirateado para desarrollar proyectos de la empresa. ¿Qué harías?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">Ignorar la situación, no es tu responsabilidad</div>
+                        <div class="quiz-option" data-correct="false">Reportarlo inmediatamente a la gerencia</div>
+                        <div class="quiz-option" data-correct="true">Hablar primero con tu colega sobre los riesgos éticos y legales</div>
+                        <div class="quiz-option" data-correct="false">Utilizar también el software para mantener la paridad</div>
+                    </div>
+                    <div class="quiz-result"></div>
+                </div>
+                
+                <div class="quiz-question">
+                    <h3>Pregunta 3:</h3>
+                    <p>Tu empresa te pide mantener en funcionamiento un sistema legacy que sabes que tiene vulnerabilidades críticas. No hay presupuesto para reemplazarlo. ¿Cuál es tu obligación ética?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">Seguir las instrucciones y mantener el sistema funcionando</div>
+                        <div class="quiz-option" data-correct="true">Documentar los riesgos y comunicarlos formalmente a la gerencia</div>
+                        <div class="quiz-option" data-correct="false">Renunciar inmediatamente a tu puesto</div>
+                        <div class="quiz-option" data-correct="false">Intentar parchear el sistema sin autorización</div>
+                    </div>
+                    <div class="quiz-result"></div>
+                </div>
+                
+                <button id="check-answers" class="btn">Verificar Respuestas</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 - Código de Ética para Ingenieros en Sistemas</p>
+            <p>Hecha por: <a style="color: #ecf0f1;">Josue Castro Villanueva</a> | <a style="color: #ecf0f1;">1BS</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Navegación por pestañas
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remover clase active de todas las pestañas y secciones
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+                
+                // Activar pestaña clickeada
+                tab.classList.add('active');
+                
+                // Activar sección correspondiente
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Interactividad del quiz
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', () => {
+                // Remover selección de otras opciones en la misma pregunta
+                const parentQuestion = option.closest('.quiz-question');
+                parentQuestion.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Seleccionar la opción clickeada
+                option.classList.add('selected');
+            });
+        });
+        
+        // Verificar respuestas del quiz
+        document.getElementById('check-answers').addEventListener('click', () => {
+            document.querySelectorAll('.quiz-question').forEach(question => {
+                const selectedOption = question.querySelector('.quiz-option.selected');
+                const resultDiv = question.querySelector('.quiz-result');
+                
+                if (selectedOption) {
+                    const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+                    
+                    resultDiv.textContent = isCorrect ? 
+                        '¡Correcto! Esta respuesta demuestra un entendimiento adecuado del principio ético.' : 
+                        'Incorrecto. Revisa los principios éticos relacionados con esta situación.';
+                    
+                    resultDiv.className = `quiz-result ${isCorrect ? 'correct' : 'incorrect'}`;
+                    resultDiv.style.display = 'block';
+                } else {
+                    const resultDiv = question.querySelector('.quiz-result');
+                    resultDiv.textContent = 'Por favor, selecciona una respuesta.';
+                    resultDiv.className = 'quiz-result incorrect';
+                    resultDiv.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
